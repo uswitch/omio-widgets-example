@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Omio widgets demo site</title>
+    <style>
+      #omio_mpu_widget {
+        width: 300px;
+      }
+      #omio_table_widget {
+        width: 580px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1> The page header </h1>
+    <p> Some general content of your website</p>
+    
+    <!-- This is the container that the widget will be implemented on -->
+    <div id="omio_mpu_widget"></div>
+    <div id="omio_table_widget"></div>
+    
+    <script type="text/javascript">
+      // This part of the script creates callback function to be executed when the widgets.js script is recieved.
+      (function() {
+        window.omioWidgetLoad = function(widgets) {
+          var brand = 'apple', // This phone brand
+              model = 'iphone'; // 
+          
+          // The load function will apply the widget the html element specified by ID in the first argument
+          // Below will load the Mpu widget
+          // widgets.load('omio_mpu_widget', 'mpu', {brand: brand, model: model});
+          
+          // Below will load the Table widget
+          widgets.load('omio_table_widget', 'table', {brand: brand, model: model});
+        };
+      }());
+    
+      // This added a script tag to the head that will get the widgets code.
+      (function(){
+          var tag = document.createElement('script'),
+              partner = "tech_radar";
+          tag.type = 'text/javascript';
+          tag.async = true;
+          tag.src = 'http://widgets-v2.omio.com/' + partner + '/widgets.js?';
+          (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(tag);
+        }());
+    </script>
+  </body>
+</html>
